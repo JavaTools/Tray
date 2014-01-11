@@ -1,0 +1,30 @@
+<launch4jConfig>
+    <dontWrapJar>false</dontWrapJar>
+    <headerType>gui</headerType>
+    <jar>../../../../build/dist/lib/tray.jar</jar>
+    <outfile>../../../../build/dist/tray.exe</outfile>
+    <errTitle></errTitle>
+    <cmdLine></cmdLine>
+    <chdir></chdir>
+    <priority>normal</priority>
+    <downloadUrl>http://java.com/download</downloadUrl>
+    <supportUrl></supportUrl>
+    <customProcName>true</customProcName>
+    <stayAlive>false</stayAlive>
+    <manifest></manifest>
+    <icon>../images/tray.ico</icon>
+    <classPath>
+        <mainClass>TrayMain</mainClass>
+        <cp>./lib/resources.jar</cp>
+        <cp>./lib/commons-cli-1.1.jar</cp>
+        <cp>./lib/commons-lang-2.4.jar</cp>
+        <cp>./lib/jdic_misc.jar</cp>
+    </classPath>
+    <jre>
+        <path></path>
+        <minVersion>1.6.0_00</minVersion>
+        <maxVersion></maxVersion>
+        <jdkPreference>preferJre</jdkPreference>
+        <opt>-Djava.library.path=lib</opt>
+    </jre>
+</launch4jConfig>

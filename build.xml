@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<project name="tray" default="compile" basedir=".">
+
+    <property environment="env"/>
+    <property name="dir.deploy" value="C:/bin/tray"/>
+    <property name="dir.dist" value="build/dist"/>
+    <property name="dir.classes" value="build/classes"/>
+    <property name="dir.src" value="src/main/java"/>
+    <property name="dir.resources" value="src/main/resources"/>
+
+    <path id="cpath">
+        <fileset dir="lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean" description="clean">
+        <delete includeemptydirs="yes" failonerror="false">
+            <fileset dir="build" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="initialize">
+        <mkdir dir="build"/>
+        <mkdir dir="build/classes"/>
+        <mkdir dir="build/dist/lib"/>
+        <mkdir dir="build/dist/data"/>
+        <mkdir dir="build/dist/data/stamps"/>
+    </target>
+
+    <target name="distribution" depends="pack(jar), pack(launch4j)">
+        <copy todir="${dir.dist}/lib" flatten="true">
+            <fileset dir="lib">
+                <include name="**/*.jar"/>
+                <include name="**/*.dll"/>
+            </fileset>
+        </copy>
+        <copy todir="${dir.dist}">
+            <fileset dir="${dir.resources}/shell">
+                <include name="markers.xml"/>
+            </fileset>
+        </copy>
+        <copy todir="${dir.dist}/data">
+            <fileset dir="${dir.resources}/images/wallpaper/1680x1050">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile" depends="initialize">
+        <javac
+                srcdir="${dir.src}"
+                destdir="${dir.classes}"
+                debug="true"
+                deprecation="false"
+                optimize="true"
+                classpathref="cpath"
+                includeantruntime="true"
+                />
+    </target>
+
+    <target name="pack(jar)" depends="compile">
+        <jar destfile="${dir.dist}/lib/tray.jar" basedir="${dir.classes}" manifest="${dir.resources}\manifest.mf"/>
+        <jar destfile="${dir.dist}/lib/resources.jar" basedir="${dir.resources}/fonts"/>
+    </target>
+
+    <target name="pack(launch4j)">
+        <taskdef name="launch4j"
+                 classname="net.sf.launch4j.ant.Launch4jTask"
+                 classpath="${dir.resources}/launch4j/launch4j.jar:${dir.resources}/launch4j/lib/xstream.jar"/>
+        <launch4j configFile="${dir.resources}/shell/tray.xml"/>
+    </target>
+
+    <target name="deploy" depends="distribution" description="deploys the files locally">
+        <copy todir="${dir.deploy}">
+            <fileset dir="${dir.dist}">
+                <include name="*"/>
+                <exclude name="*.bmp"/>
+            </fileset>
+        </copy>
+        <copy todir="${dir.deploy}/lib" flatten="true">
+            <fileset dir="${dir.dist}/lib">
+                <include name="**/*.jar"/>
+                <include name="**/*.dll"/>
+            </fileset>
+        </copy>
+    </target>
+
+</project>

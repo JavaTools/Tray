@@ -1,0 +1,33 @@
+<marks>
+
+    <!-- ======================================================================================================= -->
+    <!-- Ferier                                                                                                  -->
+    <!-- ======================================================================================================= -->
+
+    <entry week="30" back="#3e7e6d" front="#ffffff" description="Sommerferie"/>
+    <entry week="31" back="#3e7e6d" front="#ffffff" description="Sommerferie"/>
+    <entry week="32" back="#3e7e6d" front="#ffffff" description="Sommerferie"/>
+    <entry week="33" back="#4e7d8e" front="#ffffff" description="Afspadsering"/>
+    <entry week="34" back="#4e7d8e" front="#ffffff" description="Afspadsering"/>
+    <entry week="35" back="#4e7d8e" front="#ffffff" description="Afspadsering"/>
+
+    <!-- ======================================================================================================= -->
+    <!-- Faste maerkedage                                                                                         -->
+    <!-- ======================================================================================================= -->
+
+    <entry day="17/10" back="#ac5456" front="#FFFFFF" description="Muffi"/>
+
+    <entry day="06/08" back="#ac5456" front="#FFFFFF" description="Jette"/>
+    <entry day="04/09" back="#ac5456" front="#FFFFFF" description="Sune"/>
+    <entry day="29/10" back="#ac5456" front="#FFFFFF" description="Frederik"/>
+    <entry day="07/07" back="#ac5456" front="#FFFFFF" description="Sofie"/>
+    <entry day="12/02" back="#ac5456" front="#FFFFFF" description="Alex"/>
+    <entry day="22/05" back="#ac5456" front="#FFFFFF" description="Mor"/>
+
+    <entry day="29/12" back="#ac5456" front="#FFFFFF" description="Henrik"/>
+    <entry day="05/10" back="#ac5456" front="#FFFFFF" description="Christina"/>
+    <entry day="16/07" back="#ac5456" front="#FFFFFF" description="Emilie"/>
+    <entry day="21/05" back="#ac5456" front="#FFFFFF" description="Alexander"/>
+    <entry day="21/05" back="#ac5456" front="#FFFFFF" description="Frederik???????????"/>
+
+</marks>
