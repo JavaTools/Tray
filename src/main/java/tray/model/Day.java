@@ -88,8 +88,12 @@ public class Day implements Comparable {
     }
 
     public int getSpan() {
-        if (isset(start) && Time.isToday(date))
-            return span + (Time.getMinutes(date) - start);
+        if (isset(start)) {
+            if (Time.isToday(date))
+                return span + (Time.getMinutes(date) - start);
+            else
+                return span + (1440 - start);
+        }
         else
             return span;
     }
