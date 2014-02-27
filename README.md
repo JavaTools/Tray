@@ -4,6 +4,13 @@ Tray
 Tray is a small Java application targeted Windows Systems, that places an icon in the Windows System Tray to show the
 current date. Further more it tracks start- and stop times and can show a status based on timestamps.
 
+<p align="center">
+  <img src="doc/images/tray.png"/><br>
+  <i>Shows icon in the tray showing the date and the popup-menu activaed</i><br><br>
+  <img src="doc/images/tracker.png"/><br>
+  <i>Shows the time tracker window that calculates times and remaining work-estimates</i><br>
+</p>
+
 Features
 --------
 
@@ -33,3 +40,16 @@ Example VM parameter:
 ```
 -Djava.library.path=D:\Projects\Shell\Modules\Tray\build\dist\lib
 ```
+
+Development
+-----------
+
+IntelliJ Project files are not committed. In order to get IntelliJ working with tray
+all you should do is create a new plain Java-project in the tray directory.
+
++ Change src-folders to include src/main/java and src/main/resources
++ Change default
++ Add the lib folder to dependencies (F4 > Modules > Dependencies)
++ Add build.xml under the Ant tab
++ In the Ant-tab add the lib/launch4j/Launch4j.jar as additional classpath to Ant (Alt + Enter, then Additional Classpath Tab)
++ Build the resources.jar (ant target "pack(jar)") and add it as a dependencies in the Module Properties (Tab: "Dependencies").

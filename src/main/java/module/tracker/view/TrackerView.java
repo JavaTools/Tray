@@ -192,7 +192,7 @@ public class TrackerView extends JComponent implements TrackerListener {
 
     private void loadFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/Aller_Bd.ttf");
+            InputStream is = getClass().getClassLoader().getResourceAsStream("Aller_Bd.ttf");
             Font base = Font.createFont(Font.TRUETYPE_FONT, is);
             is.close();
             font = base.deriveFont(22F);
