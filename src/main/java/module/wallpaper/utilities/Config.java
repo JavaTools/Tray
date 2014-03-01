@@ -27,7 +27,7 @@ public class Config {
     public String FILE_MARKERS = "markers.xml";
     public String FILE_WALLPAPER = "data\\wallpaper.bmp";
 
-    public String URL_AUDI_IMAGES = "http://www.audi.dk/dk/brand/da/experience/multimedia_experience/gallery/Billed_kal.html";
+    public String URL_AUDI_IMAGES = "http://www.audi.dk/dk/brand/da/experience/gallery/Billed_kal.html";
     public String URL_AUDI_REGEX = "<a[^>]+href=\"([^\"]+)\"[^>]+title=\"1024x768\"[^>]*>";
     public String URL_ART_DEFAULT = DIR_ART + "\\default.png";
 
@@ -40,7 +40,7 @@ public class Config {
     public int audi_width = 1024;
     public int audi_height = 542;
 
-    public int calendars = 5;
+    public int calendars = 4;
     public int width = 1680;
     public int height = 1050;
     public int passepartout = 30;
