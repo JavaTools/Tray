@@ -48,11 +48,11 @@ IntelliJ Project files are not committed to Git. In order to get IntelliJ workin
 
 + Change src-folders to include `src/main/java` and `src/main/resources`
 + Change test-folders to include `src/test/java`
++ Change Project compiler output to `build` (F4 > Project)
 + Add `lib\jdic\jdic_misc.jar` to dependencies (F4 > Modules > Dependencies)
 + Go to a Test, e.g. `src/test/ModelTest` and press Alt+Enter at one of the failing @Test directives and select "Add 'JUnit4' to classpath" (Just use the distribution with IntelliJ)
 + Add build.xml under the Ant tab
 + In the Ant-tab add the `lib/launch4j/Launch4j.jar` as additional classpath to Ant (Alt+Enter, then Additional Classpath Tab)
 + Build the resources.jar (ant target `pack(jar)`)
 + Add the newly build `build\dist\lib\resources.jar` to dependencies (F4 > Modules > Dependencies)
-+ Right Click on e.g. `TestMain.java` and select Run
-
++ Add a Run Configuration for e.g. `TestMain.java` that has a valid directory as working directory. It is valid if it has the a data-directory with the proper structure / content. A good way to do this is to just make a copy of production directory.
