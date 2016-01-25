@@ -44,12 +44,15 @@ Example VM parameter:
 Development
 -----------
 
-IntelliJ Project files are not committed. In order to get IntelliJ working with tray
-all you should do is create a new plain Java-project in the tray directory.
+IntelliJ Project files are not committed to Git. In order to get IntelliJ working with Tray all you should do is create a new plain Java-project in the Tray directory.
 
-+ Change src-folders to include src/main/java and src/main/resources
-+ Change default
-+ Add the lib folder to dependencies (F4 > Modules > Dependencies)
++ Change src-folders to include `src/main/java` and `src/main/resources`
++ Change test-folders to include `src/test/java`
++ Add `lib\jdic\jdic_misc.jar` to dependencies (F4 > Modules > Dependencies)
++ Go to a Test, e.g. `src/test/ModelTest` and press Alt+Enter at one of the failing @Test directives and select "Add 'JUnit4' to classpath" (Just use the distribution with IntelliJ)
 + Add build.xml under the Ant tab
-+ In the Ant-tab add the lib/launch4j/Launch4j.jar as additional classpath to Ant (Alt + Enter, then Additional Classpath Tab)
-+ Build the resources.jar (ant target "pack(jar)") and add it as a dependencies in the Module Properties (Tab: "Dependencies").
++ In the Ant-tab add the `lib/launch4j/Launch4j.jar` as additional classpath to Ant (Alt+Enter, then Additional Classpath Tab)
++ Build the resources.jar (ant target `pack(jar)`)
++ Add the newly build `build\dist\lib\resources.jar` to dependencies (F4 > Modules > Dependencies)
++ Right Click on e.g. `TestMain.java` and select Run
+
