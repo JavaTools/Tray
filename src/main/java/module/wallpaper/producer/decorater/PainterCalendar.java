@@ -1,9 +1,9 @@
 package module.wallpaper.producer.decorater;
 
-import module.wallpaper.utilities.Settings;
-import module.wallpaper.markers.Markers;
 import module.wallpaper.markers.ColorSet;
+import module.wallpaper.markers.Markers;
 import module.wallpaper.utilities.Config;
+import module.wallpaper.utilities.Settings;
 import module.wallpaper.utilities.Theme;
 
 import java.awt.*;
@@ -116,7 +116,6 @@ public class PainterCalendar {
             ColorSet cs = markers.getColor(cIterator);
             if (cs != null) {
                 g2.setColor(cs.getBack());
-//				g2.fill(new Ellipse2D.Double(x+1, y-heightN+4, cellW-2, heightN+1));
                 g2.fill(new RoundRectangle2D.Double(x + 1, y - heightN + 5, cellW - 3, heightN - 1, arc, arc));
                 g2.setColor(cs.getFront());
             } else {
@@ -179,14 +178,14 @@ public class PainterCalendar {
 
         // -- Sundays ---------------------
 
-        int x = margin + cellW + pad + 6 * cellW;
+        int x = margin + cellW + pad + 5 * cellW;
         int y = margin * 2 + heightTitle;
 
         g2.setPaint(new GradientPaint(
                 x - 1, y, theme.colorGradientSundayDark,
                 x + cellW + 1, y + heightN * 7 + pad + 3, theme.colorGradientSundayLight, false
         ));
-        g2.fill(new RoundRectangle2D.Double(x - 1, y, cellW + 1, heightN * 7 + pad + 3, arc, arc));
+        g2.fill(new RoundRectangle2D.Double(x - 1, y, cellW*2 + 1, heightN * 7 + pad + 3, arc, arc));
 
     }
 
