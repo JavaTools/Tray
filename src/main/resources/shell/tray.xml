@@ -16,9 +16,7 @@
     <classPath>
         <mainClass>TrayMain</mainClass>
         <cp>./lib/resources.jar</cp>
-        <cp>./lib/commons-cli-1.1.jar</cp>
-        <cp>./lib/commons-lang-2.4.jar</cp>
-        <cp>./lib/jdic_misc.jar</cp>
+        <cp>./lib/jna-3.2.7.jar</cp>
     </classPath>
     <jre>
         <path></path>

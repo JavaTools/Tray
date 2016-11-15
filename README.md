@@ -25,21 +25,16 @@ Dependencies
 
 Tray depends on a couple of external components to achieve its functionality.
 
-+ JDIC (Java Desktop Integration Components). These are for accessing various Desktop
-  elements from Java. The System Tray and the possibility to change wallpaper
++ Java Native Access for changing the desktop wallpaper
 + Launch4J (For wrapping the Java Application as an .exe file).
 
 
-JDIC Integration
-----------------
+Java Native Access
+------------------
 
-java.library.path should point to a location with the JDIC dll's.
+Used for calling Win32 API to change the Desktop wallpaper on Windows.
 
-Example VM parameter:
-
-```
--Djava.library.path=D:\Projects\Shell\Modules\Tray\build\dist\lib
-```
+https://github.com/java-native-access/jna
 
 Development
 -----------
@@ -49,7 +44,7 @@ IntelliJ Project files are not committed to Git. In order to get IntelliJ workin
 + Change src-folders to include `src/main/java` and `src/main/resources`
 + Change test-folders to include `src/test/java`
 + Change Project compiler output to `build` (F4 > Project)
-+ Add `lib\jdic\jdic_misc.jar` to dependencies (F4 > Modules > Dependencies)
++ Add `lib\jna-3.2.7.jar` to dependencies (F4 > Modules > Dependencies)
 + Go to a Test, e.g. `src/test/ModelTest` and press Alt+Enter at one of the failing @Test directives and select "Add 'JUnit4' to classpath" (Just use the distribution with IntelliJ)
 + Add build.xml under the Ant tab
 + In the Ant-tab add the `lib/launch4j/Launch4j.jar` as additional classpath to Ant (Alt+Enter, then Additional Classpath Tab)
