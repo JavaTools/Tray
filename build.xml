@@ -7,6 +7,7 @@
     <property name="dir.classes" value="build/classes"/>
     <property name="dir.src" value="src/main/java"/>
     <property name="dir.resources" value="src/main/resources"/>
+    <property name="dir.demo" value="C:/Claus/Demo"/>
 
     <path id="cpath">
         <fileset dir="lib">
@@ -82,6 +83,15 @@
             <fileset dir="${dir.dist}/lib">
                 <include name="**/*.jar"/>
                 <include name="**/*.dll"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="sync-demo" description="copies files from production to demo directory">
+        <copy todir="${dir.demo}">
+            <fileset dir="${dir.dist}">
+                <include name="*"/>
+                <exclude name="*.bmp"/>
             </fileset>
         </copy>
     </target>
