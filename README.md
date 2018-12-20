@@ -41,8 +41,9 @@ Development
 
 IntelliJ Project files are not committed to Git. In order to get IntelliJ working with Tray all you should do is create a new plain Java-project in the Tray directory.
 
-+ Change src-folders to include `src/main/java` and `src/main/resources`
-+ Change test-folders to include `src/test/java`
++ Set src-folders to include `src/main/java` and `src/main/resources`
++ Set test-folders to include `src/test/java`
++ Set resources to point to `src/main/resources`
 + Change Project compiler output to `build` (F4 > Project)
 + Add `lib\jna-3.2.7.jar` to dependencies (F4 > Modules > Dependencies)
 + Go to a Test, e.g. `src/test/ModelTest` and press Alt+Enter at one of the failing @Test directives and select "Add 'JUnit4' to classpath" (Just use the distribution with IntelliJ)
