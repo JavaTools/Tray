@@ -15,8 +15,8 @@ public class Theme {
     public Color colorGradientSundayLight = new Color(0xFFDDDD);
 
     private String fontname = "Consolas";
-    public Font fontNormal = new Font(fontname, Font.PLAIN, 14);
-    public Font fontWeek = new Font(fontname, Font.BOLD, 14);
-    public Font fontDays = new Font(fontname, Font.BOLD, 16);
-    public Font fontTitle = new Font("Arial", Font.BOLD, 18);
+    public Font fontNormal = new Font(fontname, Font.PLAIN, 16);
+    public Font fontWeek = new Font(fontname, Font.BOLD, 16);
+    public Font fontDays = new Font(fontname, Font.BOLD, 18);
+    public Font fontTitle = new Font("Arial", Font.BOLD, 22);
 }

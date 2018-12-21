@@ -1,14 +1,18 @@
 package module.wallpaper.utilities;
 
-import common.Log;
-import module.wallpaper.markers.Markers;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.Properties;
+import java.util.Set;
+
+import common.Log;
+import module.wallpaper.markers.Markers;
 
 /**
  * Class for holding configuration parameters. The class defines sensible defaults and
@@ -37,19 +41,23 @@ public class Config {
 
     public int audi_x = 0;
     public int audi_y = 96;
-    public int audi_width = 1024;
-    public int audi_height = 542;
+    public int audi_width = 1280;
+    public int audi_height = 720;
 
-    public int calendars = 4;
-    public int width = 1680;
-    public int height = 1050;
-    public int passepartout = 30;
+    public int DEBUG = 1;
+
+    public int calendars = 6;
+    public int width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(); //1920;
+    public int height = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight(); //1080;
+    public int passepartout = 80;
     public int frame = 14;
     public int innerFrame = 20;
     public int taskbar = 30;
     public int margin = 8;
     public int arc = 8;
     public int pad = 8;
+    public int line_separator = 8;
+
 
     // --------------------------------------------------------------------------------------------
     // -- Fonts and Colors ------------------------------------------------------------------------
@@ -64,7 +72,7 @@ public class Config {
 
     public Font FONT_WINDOW = new Font("Calibri", Font.BOLD, 24);
     public Font FONT_ICON = new Font("Arial", Font.BOLD, 11);
-    public Color COLOR_ICON_BACKGROUND = new Color(0xFFFFFF);
+    public Color COLOR_ICON_BACKGROUND = new Color(0xFFddFF);
     public Color COLOR_ICON_FRAME = new Color(0x476add);
     public Color COLOR_ICON_TEXT = new Color(0x800000);
     public Color COLOR_WINDOW_BACKGROUND = new Color(0xd4d0c8);
@@ -90,14 +98,23 @@ public class Config {
     }
 
     private Config() {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("agel____.pfb");
+        font = loadFont("agel____.pfb",Font.TYPE1_FONT,64F);
+//        FONT_ICON = loadFont("OpenSansCondensed-Bold.ttf", Font.TRUETYPE_FONT,16f);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        width = (int)screenSize.getWidth();
+        height = (int)screenSize.getHeight();
+    }
+
+    private Font loadFont(String name, int type, float size) {
+        Font result = null;
+        InputStream is = getClass().getClassLoader().getResourceAsStream("fonts/"+name);
         try {
-            font = Font.createFont(Font.TYPE1_FONT, is).deriveFont((64F));
-//			font = new Font("Arial", Font.BOLD, 14);
+            result = Font.createFont(type, is).deriveFont((size));
             is.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return result;
     }
 
     /**
@@ -198,9 +215,7 @@ public class Config {
     }
 
     private Color getColor(String scode) {
-        Integer code;
-        code = Integer.parseInt(scode.substring(1), 16);
-        return new Color(code);
+        return new Color(Integer.parseInt(scode.substring(1), 16));
     }
 
     public Font getFont() {

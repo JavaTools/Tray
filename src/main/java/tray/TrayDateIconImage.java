@@ -1,11 +1,13 @@
 package tray;
 
-import common.Time;
-import module.wallpaper.utilities.Config;
-
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
+
+import common.Time;
+import module.wallpaper.utilities.Config;
 
 public class TrayDateIconImage extends BufferedImage {
     private SimpleDateFormat sdf = new SimpleDateFormat("d");
@@ -31,15 +33,19 @@ public class TrayDateIconImage extends BufferedImage {
 
         // -- Frame -----------------------------------------------------------------------
 
-        g2.setColor(Config.getInstance().COLOR_ICON_FRAME);
-        g2.drawRect(0, 0, 15, 15);
+//        g2.setColor(Config.getInstance().COLOR_ICON_FRAME);
+//        g2.drawRect(0, 0, 15, 15);
 
         // -- Text ------------------------------------------------------------------------
 
         g2.setFont(Config.getInstance().FONT_ICON);
+        Rectangle2D rect = g2.getFontMetrics().getStringBounds(day, 0, day.length(),null);
+
         int width = g2.getFontMetrics().stringWidth(day);
-        int push = (16 - width) / 2;
+        int height = g2.getFontMetrics().getAscent()-g2.getFontMetrics().getDescent();
+        int x = 8-(width/2);
+        int y = 16-((16-height)/2);
         g2.setColor(Config.getInstance().COLOR_ICON_TEXT);
-        g2.drawString(day, push, 12);
+        g2.drawString(day, x, y);
     }
 }

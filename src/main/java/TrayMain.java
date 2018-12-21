@@ -1,12 +1,12 @@
-import module.tracker.Mediator;
-import module.wallpaper.utilities.Config;
-import common.Log;
-import tray.TrayDateApplication;
-import tray.model.Dao;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+
+import common.Log;
+import module.tracker.Mediator;
+import module.wallpaper.utilities.Config;
+import tray.TrayDateApplication;
+import tray.model.Dao;
 
 public class TrayMain {
 
@@ -16,7 +16,7 @@ public class TrayMain {
 
     public void runProduction(String[] args) {
 
-        setupLog();
+        //setupLog();
 
         Log.sep();
         Log.log("Starting Tray Application");

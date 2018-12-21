@@ -22,6 +22,7 @@ public class TestMain {
     }
 
     private void runWallpaper() {
+        Config.getInstance("dev.properties");
         MainWallpaper mainWallpaper = new MainWallpaper();
         mainWallpaper.run();
     }

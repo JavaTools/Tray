@@ -1,19 +1,23 @@
 package module.wallpaper.utilities;
 
-import javax.imageio.ImageIO;
-import java.util.Properties;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.IOException;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.Properties;
+
+import javax.imageio.ImageIO;
 
 public class Settings {
     private Properties properties = null;
 
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
     public static final String DEFAULT_WALLPAPER = "/default/default.jpg";
 
     public Settings(String propertiesFileName) {

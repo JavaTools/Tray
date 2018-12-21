@@ -1,0 +1,53 @@
+<marks>
+
+    <!-- =================================================================== -->
+    <!-- Ferier                                                              -->
+    <!-- =================================================================== -->
+
+    <entry day="02/05" back="#ff10a8" front="#ffffff" description="Ny Audi"/>
+
+
+    <entry week="07" back="#3e7e6d" front="#ffffff" description="Vinterferie"/>
+
+    <entry day="02/01" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
+    <entry day="01/01" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
+    <entry day="31/12" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
+    <entry week="52" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
+
+	<entry week="42" back="#3e7e6d" front="#ffffff" description="Efterårsferie 2017"/>
+
+	<entry week="27" back="#3e7e6d" front="#ffffff" description="Sommerferie 2017"/>
+	<entry week="28" back="#3e7e6d" front="#ffffff" description="Sommerferie 2017"/>
+	<entry week="29" back="#3e7e6d" front="#ffffff" description="Sommerferie 2017"/>
+
+    <!-- =================================================================== -->
+    <!-- Faste maerkedage                                                    -->
+    <!-- =================================================================== -->
+
+    <entry day="04/11" back="#FA58F4" front="#000000" description="Sharon"/>
+    <entry day="17/02" back="#FA58F4" front="#000000" description="Frederikke"/>
+    <entry day="10/09" back="#FA58F4" front="#000000" description="Oliver"/>
+    <entry day="01/07" back="#FA58F4" front="#000000" description="Fiona"/>
+
+    <entry day="12/11" back="#000000" front="#c8ffc8" description="BreakUp-2014"/>
+    <!--entry day="17/10" back="#ac5456" front="#FFFFFF" description="Helle"/-->
+
+	<entry day="06/08" back="#ac5456" front="#FFFFFF" description="Jette"/>
+	<entry day="04/09" back="#ac5456" front="#FFFFFF" description="Sune"/>
+	<entry day="29/10" back="#ac5456" front="#FFFFFF" description="Frederik"/>
+	<entry day="07/07" back="#ac5456" front="#FFFFFF" description="Sofie"/>
+	<entry day="12/02" back="#ac5456" front="#FFFFFF" description="Alex"/>
+	<entry day="22/05" back="#ac5456" front="#FFFFFF" description="Mor"/>
+
+	<entry day="23/08" back="#ac5456" front="#FFFFFF" description="Helene(2002)"/>
+	<entry day="11/09" back="#ac5456" front="#FFFFFF" description="Lærke(2006)"/>
+
+	<!--
+	<entry day="29/12" back="#ac5456" front="#FFFFFF" description="Henrik"/>
+	<entry day="05/10" back="#ac5456" front="#FFFFFF" description="Christina"/>
+	<entry day="16/07" back="#ac5456" front="#FFFFFF" description="Emilie"/>
+	<entry day="21/05" back="#ac5456" front="#FFFFFF" description="Alexander"/>
+	<entry day="21/05" back="#ac5456" front="#FFFFFF" description="Frederik??"/>
+	-->
+
+</marks>
