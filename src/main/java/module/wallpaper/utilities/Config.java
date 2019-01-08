@@ -39,25 +39,23 @@ public class Config {
     // -- Wallpaper, image manipulation constants -------------------------------------------------
     // --------------------------------------------------------------------------------------------
 
-    public int audi_x = 0;
-    public int audi_y = 96;
-    public int audi_width = 1280;
-    public int audi_height = 720;
-
-    public int DEBUG = 1;
+    public int DEBUG = 0;
 
     public int calendars = 6;
-    public int width = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(); //1920;
-    public int height = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight(); //1080;
-    public int passepartout = 80;
-    public int frame = 14;
+    public int width,height;
     public int innerFrame = 20;
-    public int taskbar = 30;
-    public int margin = 8;
-    public int arc = 8;
-    public int pad = 8;
-    public int line_separator = 8;
+    public int arc = 10;
 
+    public int art_padding = 48;
+    public int taskbar = 30;
+    public int passepartout = 60;
+    public int calendar_spacer = 8;
+    public int calendar_padding = 20;
+    public int calendar_title_box_height = 47;
+    public int calendar_title_text_height = 16;
+    public int calendar_cell_box_width = 27;
+    public int calendar_cell_box_height = 21;
+    public int textHeight = 10;
 
     // --------------------------------------------------------------------------------------------
     // -- Fonts and Colors ------------------------------------------------------------------------

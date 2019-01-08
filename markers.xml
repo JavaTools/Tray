@@ -9,10 +9,10 @@
 
     <entry week="07" back="#3e7e6d" front="#ffffff" description="Vinterferie"/>
 
-    <entry day="02/01" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
-    <entry day="01/01" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
-    <entry day="31/12" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
-    <entry week="52" back="#3e7e6d" front="#ffffff" description="Juleferie 2018"/>
+    <entry day="02/01" back="#81BC67" front="#ffffff" description="Juleferie 2018"/>
+    <entry day="01/01" back="#81BC67" front="#ffffff" description="Juleferie 2018"/>
+    <entry day="31/12" back="#81BC67" front="#ffffff" description="Juleferie 2018"/>
+    <entry week="52" back="#81BC67" front="#ffffff" description="Juleferie 2018"/>
 
 	<entry week="42" back="#3e7e6d" front="#ffffff" description="Efterårsferie 2017"/>
 

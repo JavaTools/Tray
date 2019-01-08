@@ -33,6 +33,6 @@ public class MainSwingCalendars {
 
     private static void printSyntax() {
         System.out.println("JWallpaper v.1.0");
-        System.out.println("java MainWallpaper properties_file");
+        System.out.println("java MainWallpaper <<config-file>> <<properties-file>>");
     }
 }

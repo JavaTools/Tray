@@ -1,7 +1,5 @@
-import common.Log;
 import module.tracker.Mediator;
 import module.wallpaper.MainWallpaper;
-import module.wallpaper.image.AudiParser;
 import module.wallpaper.utilities.Config;
 
 public class TestMain {
@@ -27,8 +25,4 @@ public class TestMain {
         mainWallpaper.run();
     }
 
-    private void runMisc() {
-        AudiParser parser = new AudiParser();
-        Log.log(parser.getCurrentUrl());
-    }
 }

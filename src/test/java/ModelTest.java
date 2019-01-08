@@ -1,5 +1,6 @@
-import junit.framework.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import tray.model.Week;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class ModelTest {
         stamps.add("stop;2014-01-13(17:00)");
         Week week = new Week("2014-03",stamps);
         week.calculateValues();
-        Assert.assertEquals(week.getActualSpan(),8*60);
+        Assertions.assertEquals(week.getActualSpan(),8*60);
     }
 
     @Test
@@ -71,10 +72,8 @@ public class ModelTest {
         stamps.add("stop;2014-01-13(02:00)");
         Week week = new Week("2014-03",stamps);
         week.calculateValues();
-        Assert.assertEquals(
-            "When first stamp is a stop stamp, time should be calculated from midnight (implicit start)",
-            week.getActualSpan(),2*60
-        );
+        //When first stamp is a stop stamp, time should be calculated from midnight (implicit start)
+        Assertions.assertEquals(week.getActualSpan(),2*60);
     }
 
     @Test
@@ -83,9 +82,8 @@ public class ModelTest {
         stamps.add("start;2014-01-13(22:00)");
         Week week = new Week("2014-03",stamps);
         week.calculateValues();
-        Assert.assertEquals(
-            "When there is no stop-stamp, time should be calculated to midnight (implicit stop)",
-            week.getActualSpan(),2*60
+        //When there is no stop-stamp, time should be calculated to midnight (implicit stop)
+        Assertions.assertEquals(week.getActualSpan(),2*60
         );
     }
 }

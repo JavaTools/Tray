@@ -1,46 +1,22 @@
 package module.wallpaper.image;
 
-import module.wallpaper.utilities.StringUtility;
-import common.Log;
-import module.wallpaper.utilities.Config;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.imageio.ImageIO;
+
+import common.Log;
 
 public class ImageLoader {
     HashMap<URL, BufferedImage> cache = new HashMap<URL, BufferedImage>();
-
-    /**
-     * Loads the
-     */
-    public void loadCutAndSaveCurrentAudi() {
-        Log.log("loadCutAndSaveCurrentAudi");
-
-        try {
-            Config config = Config.getInstance();
-            String filename = config.DIR_ART + "\\" + StringUtility.getMonthNumber() + ".png";
-            File file = new File(filename);
-
-            if (!file.exists()) {
-                Log.log("No existing file, trying to download...");
-                String surl = new AudiParser().getCurrentUrl();
-                Log.log("Trying " + surl);
-                URL url = new URL(surl);
-                BufferedImage result = loadImage(url);
-                result = ImageCutter.cutout(result, config.audi_x, config.audi_y, config.audi_width, config.audi_height);
-                save(result, file);
-            } else {
-                Log.log("Dropping external fetch. File already exists (" + filename + ")");
-            }
-        } catch (Exception ex) {
-            Log.log("EXCEPTION: " + ex.getMessage());
-        }
-    }
 
     public List<URL> listLocalImageNames(String directory) {
         ArrayList<URL> list = new ArrayList<URL>();

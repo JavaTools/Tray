@@ -12,8 +12,7 @@ import java.io.File;
 
 public class MainWallpaper {
     public void run() {
-        ImageLoader loader = new ImageLoader();
-        loader.loadCutAndSaveCurrentAudi();
+
         PreviewMaterials materials = new PreviewMaterials();
         WallpaperFactory factory = new WallpaperFactory();
 

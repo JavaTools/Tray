@@ -13,17 +13,14 @@ import java.util.Calendar;
 import module.wallpaper.markers.ColorSet;
 import module.wallpaper.markers.Markers;
 import module.wallpaper.utilities.Config;
-import module.wallpaper.utilities.Settings;
 import module.wallpaper.utilities.Theme;
 
 public class PainterCalendar {
     private Graphics2D g2;
     private Calendar cIterator;
     private Dimension size;
-    private int cellW, margin, pad, arc;
-    private int line_separator;
-    private int heightB, heightN;
-    private int titleHeight=45, titleY = 38;
+    private int cellWidth, cellHeight, textHeight, calendar_padding, calendar_spacer, arc;
+    private int calendar_title_box_height, calendar_title_text_height;
     private FontMetrics fontMetricsNormal, fontMetricsDays, fontMetricsTitle;
     private String[] months = { "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December" };
     private String[] days = { "M", "T", "O", "T", "F", "L", "S" };
@@ -69,18 +66,19 @@ public class PainterCalendar {
 
         String title = months[month] + " " + year;
         x = (size.width - fontMetricsTitle.stringWidth(title)) / 2;
+        y = calendar_padding + calendar_title_box_height - (calendar_title_box_height-calendar_title_text_height)/2;
         g2.setFont(theme.fontTitle);
         g2.setColor(theme.colorTitle);
-        g2.drawString(title, x, titleY);
+        g2.drawString(title, x, y);
 
         // -- DAYS -----------------------------------------------
 
-        y = margin * 2 + titleHeight + heightB - (heightB / 6);
+        y = calendar_padding * 2 + calendar_title_box_height + cellHeight - (cellHeight / 6);
         g2.setFont(theme.fontDays);
         g2.setColor(theme.colorDays);
         for (int i = 0; i < days.length; ++i) {
-            x = margin + pad + cellW + i * cellW;
-            int push = (cellW - fontMetricsDays.stringWidth(days[i])) / 2;
+            x = calendar_padding + calendar_spacer + cellWidth + i * cellWidth;
+            int push = (cellWidth - fontMetricsDays.stringWidth(days[i])) / 2;
             g2.drawString(days[i], x + push, y);
         }
 
@@ -90,11 +88,11 @@ public class PainterCalendar {
         g2.setFont(theme.fontWeek);
         g2.setColor(theme.colorWeeks);
         for (int i = 0; i < 6; ++i) {
-            x = margin;
-            y = margin * 2 + titleHeight + pad + heightB + line_separator + i * (heightN+line_separator) + heightN - heightN / 6;
+            x = calendar_padding;
+            y = calendar_padding * 2 + calendar_title_box_height + cellHeight+ calendar_spacer + i*cellHeight;
             String s = "" + cIterator.get(Calendar.WEEK_OF_YEAR);
-            int push = (cellW - fontMetricsNormal.stringWidth(s)) / 2;
-            g2.drawString(s, x + push, y);
+            int push = (cellWidth - fontMetricsNormal.stringWidth(s)) / 2;
+            g2.drawString(s, x + push, y + cellHeight - (cellHeight-textHeight)/2);
             cIterator.add(Calendar.DATE, 7);
         }
 
@@ -107,22 +105,22 @@ public class PainterCalendar {
             int dt = cIterator.get(Calendar.DATE);
             int d = cIterator.get(Calendar.DAY_OF_WEEK) - 1;
 
-            x = margin + cellW + pad + (d == 0 ? 6 * cellW : (d - 1) * cellW);
-            y = margin * 2 + titleHeight + pad + heightB + line_separator + (line * (heightN+line_separator)) + heightN
-                    - (heightN / 6); // Sidste heightM/6 er et sjus samlet højde er 1.5*heightN
+            x = calendar_padding + cellWidth + calendar_spacer + (d == 0 ? 6 * cellWidth : (d - 1) * cellWidth);
+            y = calendar_padding * 2 + calendar_title_box_height + cellHeight + calendar_spacer + (line*cellHeight);
 
             String s = "" + dt;
-            int push = (cellW - fontMetricsNormal.stringWidth(s)) / 2;
+            int push = (int) ((cellWidth-fontMetricsNormal.stringWidth(s)) / 2) +1;
 
             ColorSet cs = markers.getColor(cIterator);
             if (cs != null) {
                 g2.setColor(cs.getBack());
-                g2.fill(new RoundRectangle2D.Double(x + 1, y - heightN + 3, cellW - 3, heightN+2 , arc, arc));
+                g2.fill(new RoundRectangle2D.Double(x + 2, y+2, cellWidth-3, cellHeight-3 , 5, 5));
+//                g2.fill(new Rectangle2D.Double(x + 2, y+2, cellWidth-3, cellHeight-3));
                 g2.setColor(cs.getFront());
             } else {
                 g2.setColor(theme.colorDates);
             }
-            g2.drawString(s, x + push, y);
+            g2.drawString(s, x + push, y + cellHeight - (cellHeight-textHeight)/2);
 
             line = d == 0 ? line + 1 : line;
             cIterator.add(Calendar.DAY_OF_MONTH, 1);
@@ -151,51 +149,51 @@ public class PainterCalendar {
         g2.fill(new RoundRectangle2D.Double(
                 0, 0, size.width, size.height, arc, arc
         ));
-
-        g2.draw(new RoundRectangle2D.Double(
-                0, 0, size.width, size.height, arc, arc
-        ));
+//        g2.setColor(Color.lightGray);
+//        g2.draw(new RoundRectangle2D.Double(
+//                0, 0, size.width, size.height, arc, arc
+//        ));
 
         // -- Title ----------------------------
 
         g2.setPaint(new GradientPaint(
-                margin, margin, theme.colorGradientInnerLight,
-                size.width - margin, margin + 16, theme.colorGradientInnerDark, false
+                calendar_padding, calendar_padding, theme.colorGradientInnerLight,
+                size.width - calendar_padding, calendar_padding + 16, theme.colorGradientInnerDark, false
         ));
         g2.fill(new RoundRectangle2D.Double(
-                margin, margin, size.width - margin * 2, titleHeight, arc, arc)
+                calendar_padding, calendar_padding, size.width - calendar_padding * 2, calendar_title_box_height, arc, arc)
         );
 
         // -- Date area ------------------------
 
         g2.setPaint(new GradientPaint(
-                margin + cellW + pad, margin * 2 + titleHeight + pad + heightB, theme.colorGradientInnerLight,
-                size.width - (margin * 2 + cellW + pad), size.height - (margin * 2 + titleHeight + pad + heightB),
+                calendar_padding + cellWidth + calendar_spacer, calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight, theme.colorGradientInnerLight,
+                size.width - (calendar_padding * 2 + cellWidth + calendar_spacer), size.height - (calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight),
                 theme.colorGradientInnerDark, false)
         );
         g2.fill(new RoundRectangle2D.Double(
-                margin + cellW + pad,
-                margin * 2 + titleHeight + pad + heightB,
-                size.width - (margin * 2 + cellW + pad),
-                size.height - (margin * 2 + titleHeight + pad + heightB) - margin,
+                calendar_padding + cellWidth + calendar_spacer,
+                calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight,
+                size.width - (calendar_padding * 2 + cellWidth + calendar_spacer),
+                size.height - (calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight) - calendar_padding,
                 arc, arc
         ));
 
         // -- Sundays ---------------------
 
-        int x = margin + cellW + pad + 5 * cellW;
-        int y = margin * 2 + titleHeight;
+        int x = calendar_padding + cellWidth + calendar_spacer + 5 * cellWidth;
+        int y = calendar_padding * 2 + calendar_title_box_height;
 
         g2.setPaint(new GradientPaint(
                 x - 1, y, theme.colorGradientSundayDark,
-                x + cellW + 1, y + heightN * 7 + pad + 3, theme.colorGradientSundayLight,
+                x + cellWidth + 1, y + cellHeight * 7 + calendar_spacer + 3, theme.colorGradientSundayLight,
                 false
         ));
         g2.fill(new RoundRectangle2D.Double(
                 x,
                 y,
-                cellW*2,
-                line_separator + (heightN+line_separator) * 6 + pad + heightB,
+                cellWidth *2,
+                cellHeight + calendar_spacer + cellHeight*6,
                 arc, arc
         ));
     }
@@ -204,27 +202,25 @@ public class PainterCalendar {
         fontMetricsNormal = g2.getFontMetrics(theme.fontNormal);
         fontMetricsDays = g2.getFontMetrics(theme.fontDays);
         fontMetricsTitle = g2.getFontMetrics(theme.fontTitle);
-        cellW = max(fontMetricsNormal.stringWidth("8") * 3, fontMetricsDays.stringWidth("8") * 2);
-        heightN = fontMetricsNormal.getAscent() + 2;
-        heightB = fontMetricsDays.getAscent() + 2;
-        System.out.println("-------------------------------------------------------------");
-        System.out.println(fontMetricsTitle.getAscent());
-        System.out.println(fontMetricsTitle.getDescent());
-        System.out.println(fontMetricsTitle.getHeight());
-        margin = Config.getInstance().margin;
+
+        cellWidth = Config.getInstance().calendar_cell_box_width;
+        cellHeight = Config.getInstance().calendar_cell_box_height;
+        textHeight = Config.getInstance().textHeight;
+        calendar_padding = Config.getInstance().calendar_padding;
         arc = Config.getInstance().arc;
-        pad = Config.getInstance().pad;
-        line_separator = Config.getInstance().line_separator;
+        calendar_spacer = Config.getInstance().calendar_spacer;
+        calendar_title_box_height = Config.getInstance().calendar_title_box_height;
+        calendar_title_text_height = Config.getInstance().calendar_title_text_height;
 
         // Size is the Dimension of one calendar
         size = new Dimension(
             max(
-            maxNameLength(fontMetricsTitle, months, " 2002") + margin * 2,
-            margin * 2 + cellW + pad + 7 * cellW
+            maxNameLength(fontMetricsTitle, months, " 2002") + calendar_padding * 2,
+            calendar_padding * 2 + cellWidth + calendar_spacer + 7 * cellWidth
             ),
-            margin * 3 + titleHeight + pad + heightB + (heightN+line_separator) * 6 + line_separator
+            calendar_padding * 3 + calendar_title_box_height + calendar_spacer + cellHeight + (cellHeight) * 6
         );
-        cellW = max(cellW, (size.width - 2 * margin - pad) / 8);
+        cellWidth = max(cellWidth, (size.width - 2 * calendar_padding - calendar_spacer) / 8);
     }
 
     private int maxNameLength(FontMetrics fm, String[] names, String postFix) {
@@ -246,28 +242,28 @@ public class PainterCalendar {
         if (enabled>0) {
             g2.setColor(new Color(200,80,200));
 
-            hLine(g2, margin);
-            hLine(g2, margin + titleHeight);
-            hLine(g2, margin + titleHeight + margin);
-            hLine(g2, margin + titleHeight + margin + heightB);
-            hLine(g2, margin + titleHeight + margin + heightB + pad);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 1);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 2);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 3);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 4);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 5);
-            hLine(g2, margin + titleHeight + margin + heightB + pad + heightN * 6);
+            hLine(g2, calendar_padding);
+            hLine(g2, calendar_padding + calendar_title_box_height);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 1);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 2);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 3);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 4);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 5);
+            hLine(g2, calendar_padding + calendar_title_box_height + calendar_padding + cellHeight + calendar_spacer + cellHeight * 6);
 
-            vLine(g2, margin);
-            vLine(g2, margin + cellW);
-            vLine(g2, margin + cellW + pad);
-            vLine(g2, margin + cellW + pad + cellW * 1);
-            vLine(g2, margin + cellW + pad + cellW * 2);
-            vLine(g2, margin + cellW + pad + cellW * 3);
-            vLine(g2, margin + cellW + pad + cellW * 4);
-            vLine(g2, margin + cellW + pad + cellW * 5);
-            vLine(g2, margin + cellW + pad + cellW * 6);
-            vLine(g2, margin + cellW + pad + cellW * 7);
+            vLine(g2, calendar_padding);
+            vLine(g2, calendar_padding + cellWidth);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 1);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 2);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 3);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 4);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 5);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 6);
+            vLine(g2, calendar_padding + cellWidth + calendar_spacer + cellWidth * 7);
         }
     }
 

@@ -1,14 +1,15 @@
 package module.wallpaper.producer;
 
-import module.wallpaper.producer.decorater.PainterCalendar;
-import module.wallpaper.utilities.Theme;
-import module.wallpaper.utilities.Settings;
-import module.wallpaper.markers.Markers;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
+
+import javax.swing.JButton;
+
+import module.wallpaper.markers.Markers;
+import module.wallpaper.producer.decorater.PainterCalendar;
+import module.wallpaper.utilities.Settings;
+import module.wallpaper.utilities.Theme;
 
 public class Builder {
     private Settings settings;
@@ -53,7 +54,6 @@ public class Builder {
         int ys1 = settings.getNumber("file_cut_y1");
         int ys2 = settings.getNumber("file_cut_y2");
 
-        int taskbar = settings.getNumber("taskbar");
         int xd1 = xs1;
         int xd2 = xs2;
         int yd1 = 254;
@@ -82,7 +82,7 @@ public class Builder {
         int year = cNow.get(Calendar.YEAR);
         int dx = painterNormal.getSize().width;
         int xx = wallpaper.getWidth();
-        int frame = settings.getNumber("frame");
+        int frame = settings.getNumber("art_padding");
 
         paintCalendar(painterNormal, xx - dx * 4 - space * 3 - frame, frame, month - 1, year);
         paintCalendar(painterNow, xx - dx * 3 - space * 2 - frame, frame, month + 0, year);
