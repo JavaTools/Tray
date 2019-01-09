@@ -105,7 +105,7 @@ public class Config {
 
     private Font loadFont(String name, int type, float size) {
         Font result = null;
-        InputStream is = getClass().getClassLoader().getResourceAsStream("fonts/"+name);
+        InputStream is = getClass().getClassLoader().getResourceAsStream(name);
         try {
             result = Font.createFont(type, is).deriveFont((size));
             is.close();
@@ -151,7 +151,6 @@ public class Config {
                 } else {
                     Log.log(" -> Configuration file: \"" + configurationFile.getAbsolutePath() + "\" doesn't exists, using default values.");
                 }
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

@@ -21,7 +21,7 @@ public class TrayMain {
         Log.sep();
         Log.log("Starting Tray Application");
 
-        String config = (args.length > 0) ? args[0] : System.getenv("ANT_CONTEXT") + ".properties";
+        String config = (args.length > 0) ? args[0] : System.getenv("USERNAME") + ".properties";
         Log.log("Configuration file: " + config);
         Config.getInstance().loadConfig(config);
 

@@ -2,7 +2,7 @@
 <project name="tray" default="compile" basedir=".">
 
     <property environment="env"/>
-    <property name="dir.deploy" value="C:/bin/tray"/>
+    <property name="dir.deploy" value="P:/tray"/>
     <property name="dir.dist" value="build/dist"/>
     <property name="dir.classes" value="build/classes"/>
     <property name="dir.src" value="src/main/java"/>

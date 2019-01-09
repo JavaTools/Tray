@@ -3,6 +3,7 @@ package module.wallpaper.utilities;
 import java.awt.*;
 
 public class Theme {
+
     public Color colorTitle = new Color(0x000000);
     public Color colorDates = new Color(0x000000);
     public Color colorDays = new Color(0x333333);
@@ -15,6 +16,7 @@ public class Theme {
     public Color colorGradientSundayLight = new Color(0xFFDDDD);
 
     private String fontname = "Consolas";
+
     public Font fontNormal = new Font(fontname, Font.PLAIN, 16);
     public Font fontWeek = new Font(fontname, Font.BOLD, 16);
     public Font fontDays = new Font(fontname, Font.BOLD, 18);

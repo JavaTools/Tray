@@ -1,6 +1,8 @@
 package module.wallpaper.producer.decorater;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.GradientPaint;
@@ -171,6 +173,9 @@ public class PainterCalendar {
                 size.width - (calendar_padding * 2 + cellWidth + calendar_spacer), size.height - (calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight),
                 theme.colorGradientInnerDark, false)
         );
+//        Composite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.9f);
+//        g2.setComposite(composite);
+//        g2.setColor(Color.WHITE);
         g2.fill(new RoundRectangle2D.Double(
                 calendar_padding + cellWidth + calendar_spacer,
                 calendar_padding * 2 + calendar_title_box_height + calendar_spacer + cellHeight,
@@ -184,11 +189,14 @@ public class PainterCalendar {
         int x = calendar_padding + cellWidth + calendar_spacer + 5 * cellWidth;
         int y = calendar_padding * 2 + calendar_title_box_height;
 
-        g2.setPaint(new GradientPaint(
-                x - 1, y, theme.colorGradientSundayDark,
-                x + cellWidth + 1, y + cellHeight * 7 + calendar_spacer + 3, theme.colorGradientSundayLight,
-                false
-        ));
+//        g2.setPaint(new GradientPaint(
+//                x - 1, y, theme.colorGradientSundayDark,
+//                x + cellWidth + 1, y + cellHeight * 7 + calendar_spacer + 3, theme.colorGradientSundayLight,
+//                false
+//        ));
+        Composite composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f);
+        g2.setComposite(composite);
+        g2.setColor(Color.RED);
         g2.fill(new RoundRectangle2D.Double(
                 x,
                 y,
@@ -196,6 +204,7 @@ public class PainterCalendar {
                 cellHeight + calendar_spacer + cellHeight*6,
                 arc, arc
         ));
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
     }
 
     private void setupMeasures() {
