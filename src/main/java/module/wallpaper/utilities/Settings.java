@@ -55,7 +55,7 @@ public class Settings {
     }
 
     public static BufferedImage paintGradient(
-            BufferedImage src, int xf, int yf, Color c1, int xt, int yt, Color c2) {
+        BufferedImage src, int xf, int yf, Color c1, int xt, int yt, Color c2) {
         Graphics2D g2 = src.createGraphics();
         setRenderingHints(g2);
         g2.setPaint(new GradientPaint(xf, yf, c1, xt, yt, c2, false));

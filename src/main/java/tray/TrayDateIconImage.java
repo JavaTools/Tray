@@ -33,8 +33,8 @@ public class TrayDateIconImage extends BufferedImage {
 
         // -- Frame -----------------------------------------------------------------------
 
-//        g2.setColor(Config.getInstance().COLOR_ICON_FRAME);
-//        g2.drawRect(0, 0, 15, 15);
+        g2.setColor(Config.getInstance().COLOR_ICON_FRAME);
+        g2.drawRect(0, 0, 15, 15);
 
         // -- Text ------------------------------------------------------------------------
 

@@ -31,10 +31,6 @@ public class Config {
     public String FILE_MARKERS = "markers.xml";
     public String FILE_WALLPAPER = "data\\wallpaper.bmp";
 
-    public String URL_AUDI_IMAGES = "http://www.audi.dk/dk/brand/da/experience/gallery/Billed_kal.html";
-    public String URL_AUDI_REGEX = "<a[^>]+href=\"([^\"]+)\"[^>]+title=\"1024x768\"[^>]*>";
-    public String URL_ART_DEFAULT = DIR_ART + "\\default.png";
-
     // --------------------------------------------------------------------------------------------
     // -- Wallpaper, image manipulation constants -------------------------------------------------
     // --------------------------------------------------------------------------------------------
@@ -46,7 +42,7 @@ public class Config {
     public int innerFrame = 20;
     public int arc = 10;
 
-    public int art_padding = 48;
+    public int art_padding = 45;
     public int taskbar = 30;
     public int passepartout = 60;
     public int calendar_spacer = 8;
@@ -70,7 +66,7 @@ public class Config {
 
     public Font FONT_WINDOW = new Font("Calibri", Font.BOLD, 24);
     public Font FONT_ICON = new Font("Arial", Font.BOLD, 11);
-    public Color COLOR_ICON_BACKGROUND = new Color(0xFFddFF);
+    public Color COLOR_ICON_BACKGROUND = new Color(0xFFFFFF);
     public Color COLOR_ICON_FRAME = new Color(0x476add);
     public Color COLOR_ICON_TEXT = new Color(0x800000);
     public Color COLOR_WINDOW_BACKGROUND = new Color(0xd4d0c8);

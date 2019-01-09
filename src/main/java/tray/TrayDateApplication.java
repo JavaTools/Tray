@@ -99,18 +99,6 @@ public class TrayDateApplication {
 
         popup.addSeparator();
 
-        item = new MenuItem("Audi.dk");
-        item.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    java.awt.Desktop.getDesktop().browse(java.net.URI.create(Config.getInstance().URL_AUDI_IMAGES));
-                } catch (java.io.IOException ex) {
-                    System.out.println("Exception (TrayDateApplication.java:119): " + ex.getMessage());
-                }
-            }
-        });
-        popup.add(item);
-
         item = new MenuItem("Exit");
         item.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
